@@ -38,9 +38,10 @@ $DBH = null;
 
 //Undersök om nåfon användare matchar frågan
 if($row = $STH->fetch()){
-    //print_r($row);
-    $_SESSION["username"] = $row["username"];
-    $_SESSION["user_id"] = $row["user_id"];
+
+    $_SESSION["kundnamn"] = $row["kundnamn"];
+    $_SESSION["kundid"] = $row["kundid"];
+    print_r($_SESSION);
     //header("Location: index.php");
 }
 

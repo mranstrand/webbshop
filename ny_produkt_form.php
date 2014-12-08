@@ -16,7 +16,7 @@
 
 <body>
     <h1>Registrera produkt</h1>
-    <form action="registerProduct.php" method="post"><br>
+    <form action="nyprodukt.php" method="post"><br>
        Namn: <input type="text" name="prodName"><br>
        Pris: <input type="text" name="prodPrice"><br>
        Bildlänk: <input type="text" name="prodImg"><br>
