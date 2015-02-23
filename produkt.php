@@ -55,5 +55,12 @@ $row = $STH->fetch();
 <img src="<?php echo $productImg; ?>" /> <br/>
 <h2>Pris: <?php echo $productPrice; ?> kr</h2>
 <?php echo $productDescription; ?>
+
+<form action="laggIKorg.php?productId=<?php echo $productID ?>" method="post">
+
+    <input type="text" name="antal">
+    <input type="submit">
+
+</form>
 </body>
 </html>
