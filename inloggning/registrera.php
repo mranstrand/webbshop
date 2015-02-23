@@ -13,7 +13,7 @@ $password = $_POST["password"];
 
 //Variabler för databaskoppling
 $dbhost     = "localhost";
-$dbname     = "webbshop";
+$dbname     = "Shop";
 $dbuser     = "root";
 $dbpass     = "";
 

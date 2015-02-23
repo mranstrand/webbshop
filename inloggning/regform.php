@@ -15,7 +15,13 @@
     <form action="registrera.php" method="post">
         Användarnamn: <input type="text" name="username" /><br/>
         Lösenord: <input type="password" name="password" /><br/>
-        <input type="submit" value="Submit">
+        Förnamn: <input type="text" name="fname" /><br/>
+        Efternamn: <input type="text" name="lname" /><br/>
+        Adress: <input type="text" name="adress" /><br/>
+        Postadress: <input type="text" name="postal" /><br/>
+        Telefonnummer: <input type="text" name="phone" /><br/>
+        Epost: <input type="text" name="email" /><br/>
+        <input type="submit" value="submit">
     </form>
 </body>
 </html>
