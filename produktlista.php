@@ -9,7 +9,7 @@
 
 //Variabler för databaskoppling
 $dbhost     = "localhost";
-$dbname     = "webbshop";
+$dbname     = "The_Great_Shop";
 $dbuser     = "root";
 $dbpass     = "";
 
@@ -20,7 +20,7 @@ $DBH = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 $DBH->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
 
 // Förbered databasfråga med placeholders (markerade med : i början)
-$STH = $DBH->prepare("SELECT * FROM tbl_produkter");
+$STH = $DBH->prepare("SELECT * FROM tbl_produkt");
 
 //Utför frågan
 $STH->execute();
@@ -41,7 +41,7 @@ $arr = $STH->fetchAll();
 <?php
 foreach($arr as $value){
 
-    echo "<a href='produkt.php?productId=" . $value["produktid"] . "'>" . $value["produktnamn"] . "</a><br>";
+    echo "<a href='produkt.php?productId=" . $value["ID"] . "'>" . $value["artikel"] . "</a><br>";
 
 }
 ?>
