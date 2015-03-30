@@ -40,7 +40,7 @@ if($row = $STH->fetch()){
 
     $_SESSION["kundnamn"] = $row["login"];
     $_SESSION["kundid"] = $row["ID"];
-    print_r($_SESSION);
+
     //header("Location: index.php");
 
     $STH = $DBH->prepare("INSERT INTO tbl_order (kundID, status, regdat) value (:kundID, :status, CURRENT_DATE())");
@@ -53,9 +53,20 @@ if($row = $STH->fetch()){
     //Utför frågan
     $STH->execute();
 
+    $STH = $DBH->prepare("SELECT LAST_INSERT_ID()");
+    //Utför frågan
+    $STH->execute();
+
+    $result = $STH->fetch();
+
+    $_SESSION["orderID"] = $result[0];
+
 
 }
 
 //Stänger databaskopplingen
 $DBH = null;
+
+print_r($_SESSION);
+
 ?>
