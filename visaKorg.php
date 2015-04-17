@@ -8,12 +8,33 @@
 
 session_start();
 
-$cart = $_SESSION["cart"]["products"];
+//Variabler för databaskoppling
+$dbhost     = "localhost";
+$dbname     = "The_Great_Shop";
+$dbuser     = "root";
+$dbpass     = "";
 
-// Loopa igenom produkter i varukorg
+//Koppla till databasen
+$DBH = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 
-foreach ($cart as $product){
+// Välj felhantering (här felsökningsläge)
+$DBH->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
 
-    echo  "<br>Id = " . $product["productId"] . ". antal = " . $product["antal"];
+// Förbered databasfråga med placeholders (markerade med : i början)
+$STH = $DBH->prepare("SELECT * FROM tbl_orderrader WHERE orderid = :orderid");
+
+$STH->bindParam(':orderid', $_SESSION["orderID"]);
+
+//Utför frågan
+$STH->execute();
+
+//Stänger databaskopplingen
+$DBH = null;
+
+$arr = $STH->fetchAll();
+
+foreach ($arr as $orderrad){
+
+    echo  "<br>Orderadsnummer = " . $orderrad["id"] . ". antal = " . $orderrad["antal"] . " produktid = " .  $orderrad["produktid"];
 
 }
