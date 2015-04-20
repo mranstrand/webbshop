@@ -21,7 +21,7 @@ $DBH = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 $DBH->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
 
 // Förbered databasfråga med placeholders (markerade med : i början)
-$STH = $DBH->prepare("SELECT * FROM tbl_orderrader WHERE orderid = :orderid");
+$STH = $DBH->prepare("SELECT * FROM view_varukorg WHERE orderid = :orderid");
 
 $STH->bindParam(':orderid', $_SESSION["orderID"]);
 
@@ -35,6 +35,8 @@ $arr = $STH->fetchAll();
 
 foreach ($arr as $orderrad){
 
-    echo  "<br>Orderadsnummer = " . $orderrad["id"] . ". antal = " . $orderrad["antal"] . " produktid = " .  $orderrad["produktid"];
+    echo  "<br>Artikelnummer = " . $orderrad["artikelnr"]. " Artikelnamn = " .
+        $orderrad["artikel"] . ". antal = " . $orderrad["antal"] . " pris = " .
+        $orderrad["pris"]. " Summa = " . $orderrad["belopp"];
 
 }
